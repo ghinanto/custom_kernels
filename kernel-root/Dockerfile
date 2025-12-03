@@ -49,7 +49,7 @@ RUN conda install --solver=classic conda-forge::conda-libmamba-solver conda-forg
 RUN conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/main \
  && conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/r
 
-RUN conda install -c conda-forge -y python=3.11 "root=6.34.*" boost-cpp htcondor bokeh==3.1.0
+RUN conda install -c conda-forge -y python=3.11 "root=6.34.*" boost-cpp bokeh==3.1.0
 
 ################
 
