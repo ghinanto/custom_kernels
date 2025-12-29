@@ -1,12 +1,12 @@
 FROM ghcr.io/betif-difaet/kernel-default:latest
 
 # Put conda in path so we can use conda activate
-#ENV PATH=$CONDA_DIR/bin:$PATH
+ENV PATH=$CONDA_DIR/bin:$PATH
 
-#RUN conda init bash
-#RUN echo "conda activate base" >> ~/.bashrc
+RUN conda init bash
+RUN echo "conda activate base" >> ~/.bashrc
 
-#SHELL ["conda", "run", "-n", "base", "/bin/bash", "-c"]
+SHELL ["conda", "run", "-n", "base", "/bin/bash", "-c"]
 
 # Install WDF
 RUN conda install compilers "cmake>=3.10" make git boost pybind11 fftw gsl conda-forge::libframel -c conda-forge -y
