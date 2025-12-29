@@ -14,10 +14,11 @@ RUN yum -y install voms-clients-cpp \
 
 WORKDIR /
 
-ENV CONDA_DIR /opt/conda
+ENV CONDA_DIR=/opt/conda
 
 RUN wget --quiet https://repo.anaconda.com/miniconda/Miniconda3-py311_25.3.1-1-Linux-x86_64.sh -O ~/miniconda.sh && \
     /bin/bash ~/miniconda.sh -b -p /opt/conda
+
 # Put conda in path so we can use conda activate
 ENV PATH=$CONDA_DIR/bin:$PATH
 
@@ -34,7 +35,7 @@ RUN conda tos accept --override-channels --channel https://repo.anaconda.com/pkg
 
 
 
-ENV TINI_VERSION v0.19.0
+ENV TINI_VERSION=v0.19.0
 ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini /bin/tini
 RUN chmod +x /bin/tini
 
@@ -67,8 +68,8 @@ RUN python3 -m pip install \
 RUN conda clean -a -y
 
 RUN echo /usr/local/lib/root >> /etc/ld.so.conf && ldconfig
-ENV PYTHONPATH /usr/local/lib/root:$PYTHONPATH
-ENV CLING_STANDARD_PCH none
+ENV PYTHONPATH=/usr/local/lib/root:$PYTHONPATH
+ENV CLING_STANDARD_PCH=none
 
 
 
